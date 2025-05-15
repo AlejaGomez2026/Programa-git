@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(199, 180, 251);
+}
+.custom-img{
+    width: 100px;
+    height: auto;
+    margin-left: 20px; /* Mueve la imagen a la derecha de la margen izquierda */
+    display: block; /* Asegura que la imagen se comporta como un bloque */
+    margin-top: 10px; /* Espacio desde la parte superior */
+}
+
+    

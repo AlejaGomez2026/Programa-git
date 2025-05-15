@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .payment-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Carrito de Compras</h1>
+
+        <!-- Tabla para mostrar los productos del carrito -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Aquí se llenarán los productos -->
+            </tbody>
+        </table>
+
+        <!-- Mensaje cuando el carrito está vacío -->
+        <p id="empty-cart-message" class="text-center">El carrito está vacío.</p>
+
+        <!-- Botón para vaciar el carrito -->
+        <div class="text-center">
+            <button class="btn btn-danger" onclick="emptyCart()">Vaciar Carrito</button>
+        </div>
+
+        <!-- Botón de pagar -->
+        <div class="text-center payment-btn">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#paymentModal">Pagar</button>
+        </div>
+    </div>
+
+    <!-- Modal de formas de pago -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Formas de Pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Selecciona una forma de pago:</p>
+                    <ul>
+                        <li>Tarjeta de Crédito</li>
+                        <li>Tarjeta de Débito</li>
+                        <li>PayPal</li>
+                        <li>Pago en Efectivo</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Confirmar Pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para cargar los productos del carrito y mostrarlos
+        function loadCart() {
+            // Obtener los productos del carrito desde localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsContainer = document.getElementById('cart-items');
+            let emptyCartMessage = document.getElementById('empty-cart-message');
+
+            // Limpiar el contenido de la tabla
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                // Mostrar mensaje si el carrito está vacío
+                emptyCartMessage.style.display = 'block';
+            } else {
+                // Ocultar mensaje de carrito vacío
+                emptyCartMessage.style.display = 'none';
+
+                // Llenar la tabla con los productos del carrito
+                cart.forEach(item => {
+                    let row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                    `;
+                    cartItemsContainer.appendChild(row);
+                });
+            }
+        }
+
+        // Función para vaciar el carrito
+        function emptyCart() {
+            localStorage.removeItem('cart');
+            loadCart();  // Recargar el carrito después de vaciarlo
+            alert('El carrito ha sido vaciado.');
+        }
+
+        // Cargar los productos del carrito al cargar la página
+        window.onload = loadCart;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Peluquería</title>
+    <!-- Integración de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            width: 300px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Servicios de Peluquería</h1>
+        <div class="card-container">
+            <!-- Tarjeta 1: Corte de Cabello -->
+            <a href="{{ url_for('cortes') }}" class="text-decoration-none">
+                <div class="card">
+                    <img src="https://haircutday.com/b/wp-content/uploads/2023/01/WhatsApp-Image-2023-02-21-at-17.59.27.jpeg" class="card-img-top" alt="Corte de Cabello">
+                    <div class="card-body">
+                        <h5 class="card-title">Corte de Cabello</h5>
+                        <p class="card-text">Obtén el corte de cabello perfecto para tu estilo personal.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tarjeta 2: Tinte de Cabello -->
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXX7Z7mt1FF_w2QlVN06uhjINhoFoCEKgFTg&s" class="card-img-top" alt="Tinte de Cabello">
+                <div class="card-body">
+                    <h5 class="card-title">Tinte de Cabello</h5>
+                    <p class="card-text">Dale un toque de color vibrante o un cambio total de imagen.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Manicura -->
+            <div class="card">
+                <img src="https://media.glamour.mx/photos/6397741979e39104737cbc43/16:9/w_2560%2Cc_limit/clean_manicure_un%25CC%2583as_en_tendencia.jpg" class="card-img-top" alt="Manicura">
+                <div class="card-body">
+                    <h5 class="card-title">Manicura</h5>
+                    <p class="card-text">Cuida y embellece tus manos con una manicura profesional.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4: Pedicura -->
+            <div class="card">
+                <img src="https://en-chatelaine.mblycdn.com/ench/resized/2022/04/1600x1200/at-home-pedicure-guide-ft.jpg" class="card-img-top" alt="Pedicura">
+                <div class="card-body">
+                    <h5 class="card-title">Pedicura</h5>
+                    <p class="card-text">Relaja y embellece tus pies con nuestra pedicura exclusiva.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5: Maquillaje Profesional -->
+            <div class="card">
+                <img src="https://hotmart.s3.amazonaws.com/product_pictures/adb53982-9958-47c0-861b-246c50547295/mujerhermosamaquillajeprofesional_1625681015.jpg" class="card-img-top" alt="Maquillaje Profesional">
+                <div class="card-body">
+                    <h5 class="card-title">Maquillaje Profesional</h5>
+                    <p class="card-text">Déjate mimar con un maquillaje profesional para cualquier ocasión.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 6: Compra de Productos de Peluquería -->
+            <a href="{{ url_for('productos') }}" class="text-decoration-none">
+            <div class="card">
+                <img src="https://sevilla.abc.es/estilo/bulevarsur/wp-content/uploads/sites/14/2016/11/TOP_PELUQUERIAS_FOTO_PORTADA.jpg" class="card-img-top" alt="Productos de Peluquería">
+                <div class="card-body">
+                    <h5 class="card-title">Compra de Productos de Peluquería</h5>
+                    <p class="card-text">Adquiere los mejores productos para el cuidado del cabello y más.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Integración de Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
